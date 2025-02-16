@@ -11,6 +11,12 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        pop: ['Poppins'],
+        baskville:['baskville'],
+        blockscript:['blockscript'],
+
+      }
     },
   },
   plugins: [],
