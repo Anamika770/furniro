@@ -10,7 +10,7 @@ export default function Header() {
 
   return (
     <div className="container mx-auto">
-      <div className="flex items-center justify-between w-full px-6 py-3">
+      <div className="flex items-center justify-between w-full px-4 lg:px-10 py-3">
         {/* Logo */}
           <div className="transition-all duration-500 hover:scale-110">
         <div className="cursor-pointer flex justify-between items-center font-bold">
@@ -67,7 +67,7 @@ export default function Header() {
 
         {/* Icons - Desktop */}
         <div className="hidden lg:flex items-center gap-9 text-gray-600">
-          <User className="w-6 h-6 cursor-pointer hover:text-black transition-all duration-300 hover:scale-125 inline-block" />
+          <Link href="/about"><User className="w-6 h-6 cursor-pointer hover:text-black transition-all duration-300 hover:scale-125 inline-block" /></Link>
           <Search className="w-6 h-6 cursor-pointer hover:text-black transition-all duration-300 hover:scale-125 inline-block" />
           <ShoppingCart className="w-6 h-6 cursor-pointer hover:text-black transition-all duration-300 hover:scale-125 inline-block" />
           <Heart className="w-6 h-6 cursor-pointer hover:text-black transition-all duration-300 hover:scale-125 inline-block" />
