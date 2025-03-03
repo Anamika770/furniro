@@ -14,10 +14,10 @@ export default function Arrival() {
                 <h2 className="text-[#B88E2F] font-bold text-4xl">
                     Discover Our <br /> New Collection
                 </h2>
-                <p className="text-sm mt-2">
+                <div className="text-sm mt-2">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
                     tellus, luctus nec ullamcorper mattis.
-                </p>
+                </div>
                 <button className="bg-[#B88E2F] transition-all duration-300 hover:scale-95 text-white font-bold px-4 py-2 mt-4 rounded-md">
                     BUY NOW
                 </button>
@@ -31,9 +31,9 @@ export default function Arrival() {
             <h2 className="text-xl font-bold text-[#B88E2F] mt-2">
                 Discover Our New Collection
             </h2>
-            <p className="text-sm text-gray-600 mt-2">
+            <div className="text-sm text-gray-600 mt-2">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.
-            </p>
+            </div>
             <button className="bg-[#B88E2F] text-white font-bold px-4 py-2 mt-4 rounded-md">
                 BUY NOW
             </button>
