@@ -1,5 +1,5 @@
 import ProductView from "./components/productView";
-
+import img1 from "./utils/image_5.png"
 // Generate Meta Tags
 export const metadata = {
     title: "Single Product",
@@ -12,7 +12,7 @@ export const metadata = {
         siteName: "Single Product",
         images: [
             {
-                url: "/images/og-image.png",
+                url: img1,
                 width: 800,
                 height: 600,
             },

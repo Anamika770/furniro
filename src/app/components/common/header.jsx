@@ -58,7 +58,7 @@ export default function Header() {
             <li>
               <Link 
                 className="transition-all duration-300 hover:scale-110 inline-block" 
-                href="#"
+                href="/contact"
               >
                 Contact
               </Link>
@@ -103,7 +103,7 @@ export default function Header() {
              <Info className="w-6 h-6" /><span> About </span>
             </div>
             </Link>
-            <Link href="#" className="text-xl hover:text-gray-600" onClick={() => setIsMenuOpen(false)}>
+            <Link href="/contact" className="text-xl hover:text-gray-600" onClick={() => setIsMenuOpen(false)}>
             <div className="flex items-center gap-3">
              <Contact className="w-6 h-6" /><span> Contact </span>
             </div>

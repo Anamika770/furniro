@@ -16,7 +16,7 @@ export default function Category() {
                 <p className="text-gray-600 text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit!</p>
             </div>
             
-            <div className="flex flex-row flex-wrap justify-center gap-4">
+            <div className="flex flex-row justify-center gap-4">
                 {categoryItems.map((item, index) => (
                     <div key={index} className="flex flex-col items-center group cursor-pointer">
                         <div className="mb-2 overflow-hidden">
