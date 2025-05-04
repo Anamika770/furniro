@@ -10,13 +10,14 @@ export default function Header() {
 
   return (
     <div className="container mx-auto">
-      <div className="flex items-center justify-between w-full px-4 lg:px-10 py-3">
-        {/* Logo */}
-          <div className="transition-all duration-500 hover:scale-110">
-        <div className="cursor-pointer flex justify-between items-center font-bold">
-          <Image src={logo} alt="Logo" className="w-full h-6 lg:w-16 lg:h-7" />
-          <div className="text-black text-2xl lg:text-3xl">Furniro</div>
-          </div>
+      <div className="flex items-center justify-between w-full py-3">
+        <div className="transition-all duration-500 hover:scale-110">
+          <Link href="/">
+            <div className="cursor-pointer flex justify-between items-center font-bold">
+              <Image src={logo} alt="Logo" className="w-full h-6 lg:w-16 lg:h-7" />
+              <div className="text-black text-2xl lg:text-3xl">Furniro</div>
+            </div>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
