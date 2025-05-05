@@ -75,7 +75,7 @@ export default function Header() {
         </div>
 
         {/* Navigation - Mobile */}
-        <div className={`fixed top-0 right-0 h-full w-[50%] bg-white transform ${
+        <div className={`fixed top-0 right-0 h-full w-[50%] z-10 bg-white transform ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-300 lg:hidden shadow-lg p-8`}>
           {/* Close Button */}

@@ -1,9 +1,9 @@
 import Image from "next/image"
-import img1 from "../utils/image_6.png"
+import img1 from "../utils/imagefile-1746350971291-628662384.webp"
 
 export default function ProductView() {
     return (
-        <div className="container max-auto px-4 py-8">
+        <div className="container px-4 py-8">
             <div className="flex flex-col space-y-8">
                 <div className="flex flex-col lg:flex-row items-center gap-8 justify-between">
                     <div className="lg:w-1/2 text-center lg:text-left">
