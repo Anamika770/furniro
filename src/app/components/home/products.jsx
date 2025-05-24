@@ -100,15 +100,13 @@ export default function Product() {
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {products.map((item, index) =>(
-          <div key={index} className="relative flex flex-col w-full max-w-xs bg-white">
+          <div key={index} className="relative flex flex-col w-full bg-white">
           {/* Image container with badge */}
-          <div className="relative w-full h-48 overflow-hidden bg-gray-100">
+          <div className="relative w-full  overflow-hidden bg-gray-100">
             <Image 
               src={item?.image} 
               alt={item?.name}
               className="object-cover w-full h-full"
-              width={300}
-              height={192}
             />
             
             {/* Discount or New badge */}
@@ -123,27 +121,21 @@ export default function Product() {
             ) : null}
             
             {/* Add to cart button - only shown on hover */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-              <button className="bg-white text-gray-800 py-2 px-4 text-sm font-medium">
+           <div className="absolute inset-0 space-y-5 flex flex-col items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300">
+              <button className="bg-white text-[#B88E2F]  py-2 px-4 text-sm font-bold">
                 Add to cart
               </button>
+              <div className="flex items-center text-white cursor-pointer font-bold space-x-4 mb-3">
+                <Share2 size={16} className="mr-1" /> Share
+                <BarChart2 size={16} className="mr-1" /> Compare
+                <Heart size={16} className="mr-1" /> Like
+              </div>
             </div>
+
           </div>
           
           {/* Product info */}
-          <div className="pt-4 pb-2">
-            {/* Action buttons */}
-            <div className="flex items-center space-x-4 mb-3">
-              <button className="flex items-center text-gray-500 text-xs">
-                <Share2 size={16} className="mr-1" /> Share
-              </button>
-              <button className="flex items-center text-gray-500 text-xs">
-                <BarChart2 size={16} className="mr-1" /> Compare
-              </button>
-              <button className="flex items-center text-gray-500 text-xs">
-                <Heart size={16} className="mr-1" /> Like
-              </button>
-            </div>
+          <div className=" bg-[#F4F5F7] p-4">
             
             {/* Product name */}
             <h3 className="font-medium text-lg text-gray-800">{item?.name}</h3>
@@ -152,7 +144,7 @@ export default function Product() {
             <p className="text-sm text-gray-500 mb-2">{item?.description}</p>
             
             {/* Price */}
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center justify-between space-x-2">
               <span className="font-medium">Rp {item?.price.toLocaleString()}</span>
               {item?.originalPrice && (
                 <span className="text-gray-400 text-sm line-through">
@@ -166,7 +158,7 @@ export default function Product() {
       </div>
       
       <div className="flex justify-center mt-10">
-        <button className="border border-yellow-500 text-gray-700 px-8 py-2 hover:bg-yellow-50 transition-colors">
+        <button className="border border-yellow-500 text-gray-700 px-8 py-2 hover:bg-[#B88E2F] hover:text-white hover:scale-110 transition-all duration-300 rounded-lg">
           Show More
         </button>
       </div>
