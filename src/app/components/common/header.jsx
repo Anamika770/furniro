@@ -3,9 +3,11 @@ import logo from "../common/util/mainLogo.png";
 import Link from "next/link";
 import { Heart, Search, ShoppingCart, User, Menu, X, Contact, Info, Store, House } from "lucide-react";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  console.log("logo image was comming", logo)
 
   return (
     <div className="container mx-auto">
@@ -13,7 +15,7 @@ export default function Header() {
         <div className="transition-all duration-500 hover:scale-110">
           <Link href="/">
             <div className="cursor-pointer flex justify-between items-center font-bold">
-              <img src={logo} alt="Logo" className="w-full h-6 lg:w-16 lg:h-7" />
+              <Image src={logo} alt="Logo" className="w-full h-6 lg:w-16 lg:h-7" />
               <div className="text-black text-2xl lg:text-3xl">Furniro</div>
             </div>
           </Link>
