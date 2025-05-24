@@ -158,7 +158,7 @@ export default function Product() {
       </div>
       
       <div className="flex justify-center mt-10">
-        <button className="border border-yellow-500 text-gray-700 px-8 py-2 hover:bg-[#B88E2F] hover:text-white hover:scale-110 transition-all duration-300 rounded-lg">
+        <button className="border-2 border-cyan text-cyan font-bold px-8 py-2 hover:bg-cyan hover:text-white hover:scale-110 transition-all duration-300 rounded-lg">
           Show More
         </button>
       </div>
