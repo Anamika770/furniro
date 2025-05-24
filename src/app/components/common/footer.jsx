@@ -16,7 +16,7 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="md:flex justify-between text-left">
           <div className="mb-8 md:space-y-10">
-            <div className="font-bold text-lg md:text-3xl mb-4">Funiro.</div>
+            <div className="font-bold text-3xl mb-4">Funiro.</div>
             <address className="text-gray-600 text-xl not-italic">
               <div>400 University Drive Suite 200 Coral</div>
               <div>Gables, <br /> FL 33134 USA</div>
