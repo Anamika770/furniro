@@ -17,7 +17,7 @@ export default function Header() {
 
 
   return (
-    <div className="container mx-auto bg-gradient-to-r from-red-900 to-orange-500">
+    <div className="container mx-auto">
       <div className="flex items-center justify-between w-full py-3">
         <div className="transition-all duration-500 hover:scale-110">
           <Link href="/">
