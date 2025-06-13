@@ -26,7 +26,7 @@ export default function Footer() {
           <div className="md:flex sm:gap-8  lg:gap-24">
             <div className="mb-8 md:space-y-10">
               <h6 className="font-bold text-gray-800 mb-4">Links</h6>
-              <ul className="space-y-10">
+              <ul className="space-y-5">
                 {links.map((link) => (
                   <li key={link.name}>
                     <a
@@ -42,7 +42,7 @@ export default function Footer() {
 
             <div className="mb-8 md:space-y-10">
               <h6 className="font-bold text-gray-800 mb-4">Help</h6>
-              <ul className="space-y-10">
+              <ul className="space-y-5">
                 {help.map((item) => (
                   <li key={item.name}  >
                     <a

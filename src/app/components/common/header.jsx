@@ -7,10 +7,17 @@ import Image from "next/image";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  console.log("logo image was comming", logo)
+
+  const links = [
+    { href: "/home", label: "Home" },
+    { href: "/shop", label: "Shop" },
+    { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" }
+  ];
+
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto bg-gradient-to-r from-red-900 to-orange-500">
       <div className="flex items-center justify-between w-full py-3">
         <div className="transition-all duration-500 hover:scale-110">
           <Link href="/">
@@ -32,38 +39,16 @@ export default function Header() {
         {/* Navigation - Desktop */}
         <nav className="hidden lg:block">
           <ul className="flex items-center gap-14">
-            <li>
-              <Link 
-                className="transition-all duration-300 hover:scale-125 inline-block" 
-                href="#"
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link 
-                className="transition-all duration-300 hover:scale-110 inline-block" 
-                href="#"
-              >
-                Shop
-              </Link>
-            </li>
-            <li>
-              <Link 
-                className="transition-all duration-300 hover:scale-110 inline-block" 
-                href="#"
-              >
-                About
-              </Link>
-            </li>
-            <li>
-              <Link 
-                className="transition-all duration-300 hover:scale-110 inline-block" 
-                href="/contact"
-              >
-                Contact
-              </Link>
-            </li>
+            {links.map((link) => (
+              <li key={link.href}>
+                <Link 
+                  className="transition-all duration-300 hover:scale-110 inline-block" 
+                  href={link.href}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
 
