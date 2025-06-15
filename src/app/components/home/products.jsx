@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image";
 import { Share2, BarChart2, Heart } from "lucide-react";
 import product1 from "./utils/image_1.png"
@@ -7,9 +8,12 @@ import product4 from "./utils/image_4.png"
 import product5 from "./utils/image_5.png"
 import product6 from "./utils/image_6.png"
 import product7 from "./utils/image_7.png"
+import { useAppDispatch } from "@/lib/store/hooks";
+import { add } from "@/lib/store/slice/cartSlice";
 
 
 export default function Product() {
+  const dispatch = useAppDispatch()
   const products = [
     {
       id: 1,
@@ -94,6 +98,16 @@ export default function Product() {
     // Add more products as needed
   ];
 
+
+  const handleAddToCart = (productId) => {
+    dispatch(add(productId))
+    console.log("handle add to cart", productId)
+      const cartElement = document.getElementById("cart-icon");
+      if (cartElement) {
+        cartElement.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+  }
+
   return (
     <div className="container mx-auto px-4 py-12">
       <h2 className="text-3xl font-bold text-center mb-10">Our Products</h2>
@@ -122,7 +136,7 @@ export default function Product() {
             
             {/* Add to cart button - only shown on hover */}
            <div className="absolute inset-0 space-y-5 flex flex-col items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300">
-              <button className="bg-white text-[#B88E2F]  py-2 px-4 text-sm font-bold">
+              <button onClick={() => handleAddToCart(item.id)} className="bg-white text-[#B88E2F]  py-2 px-4 text-sm font-bold" > 
                 Add to cart
               </button>
               <div className="flex items-center text-white cursor-pointer font-bold space-x-4 mb-3">

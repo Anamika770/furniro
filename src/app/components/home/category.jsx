@@ -60,7 +60,7 @@ export default function Category() {
                                     alt={`${item.title} category`}
                                     width={300}
                                     height={200}
-                                    className="transition-transform duration-300 group-hover:scale-105 rounded-lg"
+                                    className="transition-transform duration-300 group-hover:scale-105 rounded-lg pt-3"
                                 />
                             </div>
                             <h3 className="text-lg font-medium text-[#333333] transition-colors duration-300 group-hover:text-[#2a6877]">
