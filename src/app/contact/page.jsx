@@ -1,10 +1,11 @@
-import Fliping from "./components/Fliping";
+// import Fliping from "./components/Fliping";
 import WithUs from "./components/withUs";
 
 export default function Page() {
     return (
         <>
-            <Fliping />
+        <div>testing</div>
+            {/* <Fliping /> */}
         </>
     )
 };
