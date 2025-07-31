@@ -4,6 +4,7 @@ import Header from "./components/common/header";
 import Footer from "./components/common/footer";
 import StoreProvider from "./StoreProvider";
 import { Toaster } from "sonner";
+import PageWrapper from "./motionWrap";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,9 +30,12 @@ export default function RootLayout({ children }) {
       >
 
         <StoreProvider>
+          
         <Header />
+        <PageWrapper>
         {children}
         <Toaster />
+        </PageWrapper>
         <Footer />
         </StoreProvider>
       </body>
