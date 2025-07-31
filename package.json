@@ -19,7 +19,8 @@
     "react-pageflip": "^2.0.3",
     "react-redux": "^9.2.0",
     "react-slick": "^0.30.3",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "sonner": "^2.0.6"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
