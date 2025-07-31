@@ -69,7 +69,7 @@ export default function Header() {
 
         {/* Icons - Desktop */}
         <div className="hidden lg:flex items-center gap-9 text-gray-600">
-          <Link href="/about">
+          <Link href="/auth/login">
             <User className="w-6 h-6 cursor-pointer hover:text-black transition-all duration-300 hover:scale-125 inline-block" />
           </Link>
           <Search className="w-6 h-6 cursor-pointer hover:text-black transition-all duration-300 hover:scale-125 inline-block" />
@@ -137,7 +137,7 @@ export default function Header() {
             {/* Mobile Icons */}
             <div className="flex flex-col items-start gap-4">
               <Link
-                href="#"
+                href="/auth/login"
                 className="text-xl hover:text-gray-600"
                 onClick={() => setIsMenuOpen(false)}
               >
