@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
+    "axios": "^1.11.0",
     "lucide-react": "^0.475.0",
     "next": "15.1.6",
     "pdfjs-dist": "^5.3.31",
