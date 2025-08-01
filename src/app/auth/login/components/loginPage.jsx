@@ -40,7 +40,7 @@ export default function SignIn() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 flex">
       {/* Left Side - Form */}
-      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
+      <div className="hidden lg:flex justify-center items-center lg:w-1/2 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-indigo-700"></div>
         <div className="relative z-10 flex flex-col justify-center items-center text-white p-12">
           <div className="w-64 h-64 bg-white/10 rounded-full flex items-center justify-center mb-8 backdrop-blur-sm">
