@@ -133,7 +133,7 @@ export default function SignUp() {
                   <Phone className="h-5 w-5 text-gray-400" />
                 </div>
                 <input
-                  type="tel"
+                  type="number"
                   id="phoneNumberUser"
                   name="phone"
                   value={aUser?.phone || ''}
