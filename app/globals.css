@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+
+
+@font-face {
+    font-family: baskville;;
+    src: url(../app/fonts/BASKVILL.ttf);
+}
+
+
+@font-face {
+    font-family: brockscript;
+    src: url(../app/fonts/BrockScript.ttf);
+}
+
+
+@font-face {
+    font-family: popince;
+    src: url(../app/fonts/RobotoMono-Italic-VariableFont_wght.ttf);
+}
+
+
+.container {
+    margin: 0px auto  !important;
+    padding: 15px 75px  !important;
+}
+
+
+@media only screen and (max-width: 767px) {
+    .container {
+      padding: 15px 15px !important;
+    }
+}
