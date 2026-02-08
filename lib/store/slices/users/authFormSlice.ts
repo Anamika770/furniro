@@ -1,4 +1,4 @@
-import axios from "@/appUtils/axiosConfig";
+import { axiosApi } from "@/appUtils/axiosConfig";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
 
@@ -7,6 +7,7 @@ export type IAuthForm = {
     name?: string;
     phone?: string;
     password?: string;
+    email?: string;
 }
 
 const initialState = {
@@ -33,18 +34,18 @@ export const addUserFormSlice = createAsyncThunk<
 
       dispatch(addUserListStart());
 
-      if (!data?.name || !data?.phone || !data?.password) {
+      if (!data?.name || !data?.phone || !data?.password || !data?.email) {
         return rejectWithValue("Please provide all required fields.");
       }
 
-      const response = await axios.post("auth/user/create", data);
+      const response = await axiosApi("auth/user/create", {
+            method: "POST",
+            data: data,
+          });
 
-      console.log("User Response is :-", response)
-
-      if (response.status === 200) {
-        const message = response.data?.message || "User created successfully";
-        dispatch(addUserListSuccess({ data: response.data, message }));
-        return { message };
+      if (response?.success) {
+        dispatch(addUserListSuccess(response.data));
+        return response?.data;
       } else {
         const errorMsg = response.data?.message ?? "Something went wrong";
         dispatch(addUserListFailed(errorMsg));

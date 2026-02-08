@@ -1,6 +1,6 @@
 "use client";
 
-import { Eye, EyeOff, Loader2, Lock, Phone, User } from "lucide-react";
+import { Eye, EyeOff, Loader2, Lock, Mail, Phone, User } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
@@ -42,15 +42,21 @@ export default function SignUp() {
   const handleSubmit = async (e:any) => {
     e.preventDefault();
 
-    const result = await dispatch(addUserFormSlice(null));
-
-    if (addUserFormSlice.fulfilled.match(result)) {
-      console.log("result", result)
-      toast.success(result.payload?.message || "User created successfully!");
-      router.push("/");
-    } else {
-      toast.error("Something went wrong!");
+    try {
+      dispatch(addUserFormSlice(null)).then(
+        (response: any) => {
+          if (!response?.error) {
+            router.push(`/auth/login`);
+            toast.success(response?.payload?.message);
+          } else {
+            toast.error(response?.payload || 'Something Went Wrong');
+          }
+        }
+      );
+    } catch (error) {
+      toast.error('Something Went Wrong');
     }
+    
   };
 
   const togglePasswordVisibility = () => {
@@ -103,9 +109,12 @@ export default function SignUp() {
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Username Field */}
             <div className="space-y-2">
-              <label htmlFor="username" className="block text-sm font-semibold text-gray-700">
-                Username
-              </label>
+              <div className="flex space-x-1 items-center">
+                <label htmlFor="username" className="block text-sm font-semibold text-gray-700">
+                  User Name 
+                </label>
+                <p className="text-red-800 text-xl">*</p>
+              </div>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <User className="h-5 w-5 text-gray-400" />
@@ -123,11 +132,39 @@ export default function SignUp() {
               </div>
             </div>
 
+            {/* User Email */}
+            <div className="space-y-2">
+              <div className="flex space-x-1 items-center">
+                <label htmlFor="username" className="block text-sm font-semibold text-gray-700">
+                  User Email
+                </label>
+                <p className="text-red-800 text-xl">*</p>
+              </div>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Mail className="h-5 w-5 text-gray-400" />
+                </div>
+                <input
+                  type="text"
+                  id="email"
+                  name="email"
+                  value={aUser?.email || ''}
+                  onChange={handleInputChange}
+                  placeholder="Enter your username"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#a68328] focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                  required
+                />
+              </div>
+            </div>
+
             {/* Phone Field */}
             <div className="space-y-2">
-              <label htmlFor="phoneNumberUser" className="block text-sm font-semibold text-gray-700">
-                Phone Number
-              </label>
+              <div className="flex space-x-1 items-center">
+                <label htmlFor="phoneNumberUser" className="block text-sm font-semibold text-gray-700">
+                  Phone Number
+                </label>
+                <div className="text-red-800 text-xl">*</div>
+              </div>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <Phone className="h-5 w-5 text-gray-400" />
@@ -147,9 +184,12 @@ export default function SignUp() {
 
             {/* Password Field */}
             <div className="space-y-2">
-              <label htmlFor="password" className="block text-sm font-semibold text-gray-700">
-                Password
-              </label>
+              <div className="flex items-center space-x-1">
+                <label htmlFor="password" className="block text-sm font-semibold text-gray-700">
+                  Password
+                </label>
+                <div className="text-red-800 text-xl">*</div>
+              </div>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <Lock className="h-5 w-5 text-gray-400" />

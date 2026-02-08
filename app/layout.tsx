@@ -8,6 +8,7 @@ import Header from "./components/common/header";
 import PageWrapper from "./motionWrap";
 import { Toaster } from "sonner";
 import Footer from "./components/common/footer";
+import SessionProviderWrapper from "./SessionProviderWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,15 +36,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <StoreProvider>
-          
-        <Header />
-        <PageWrapper>
-        {children}
-        <Toaster />
-        </PageWrapper>
-        <Footer />
-        </StoreProvider>
+        <SessionProviderWrapper>
+          <StoreProvider>
+            <Header />
+            <PageWrapper>
+              {children}
+              <Toaster />
+            </PageWrapper>
+            <Footer />
+          </StoreProvider>
+        </SessionProviderWrapper>
       </body>
     </html>
   );

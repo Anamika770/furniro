@@ -1,18 +1,23 @@
 "use client";
 
 import { Eye, EyeOff, Mail, Lock, Loader2, ArrowRight } from "lucide-react";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useState, useTransition } from "react";
 import { toast } from "sonner";
 
 export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const callbackUrl = searchParams.get('callbackUrl') || '/auth';
   const [formData, setFormData] = useState({
     email: '',
     password: '',
     rememberMe: false
   });
-  const [loading, setLoading] = useState(false);
+  const [loading, startTransition] = useTransition();
 
   const handleInputChange = (e:any) => {
     const { name, value, type, checked } = e.target;
@@ -23,20 +28,27 @@ export default function SignIn() {
     }));
   };
 
-  const handleSubmit = (e:any) => {
+  const handleSubmit  = async (e:any) => {
     e.preventDefault();
-    setLoading(true);
-    
-    // Simulate API call
-    setTimeout(async () => {
-      console.log("Form submitted:", formData);
+    startTransition(async () => {
       try {
-         toast.success("User Login successfully!");
+        const result = await signIn('credentials', {
+          redirect: false,
+          email: formData.email,
+          password: formData.password,
+          callbackUrl
+        });
+
+        if (!result?.error) {
+          router.push(callbackUrl);
+          toast.success('Signed In Successfully!');
+        } else {
+          toast.error(result?.error ?? 'Login failed');
+        }
       } catch (error) {
-        toast.error(`Error : ${error}`)
+        toast.error('An error occurred while logging in');
       }
-      setLoading(false);
-    }, 2000);
+    });
   };
 
   const togglePasswordVisibility = () => {
