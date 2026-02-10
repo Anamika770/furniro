@@ -15,7 +15,6 @@ export default function SignIn() {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
-    rememberMe: false
   });
   const [loading, startTransition] = useTransition();
 
@@ -167,23 +166,6 @@ export default function SignIn() {
                     <Eye className="h-5 w-5 text-gray-400" />
                   )}
                 </button>
-              </div>
-            </div>
-
-            {/* Remember Me Checkbox */}
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <input
-                  id="rememberMe"
-                  name="rememberMe"
-                  type="checkbox"
-                  checked={formData.rememberMe}
-                  onChange={handleInputChange}
-                  className="h-4 w-4 text-[#b5912e] focus:ring-[#8c6f1f] border-gray-300 rounded"
-                />
-                <label htmlFor="rememberMe" className="ml-2 block text-sm text-gray-700">
-                  Remember me
-                </label>
               </div>
             </div>
 

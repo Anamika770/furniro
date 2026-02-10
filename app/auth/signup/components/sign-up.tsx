@@ -45,9 +45,10 @@ export default function SignUp() {
     try {
       dispatch(addUserFormSlice(null)).then(
         (response: any) => {
+          console.log("Respose Data is:", response?.payload?.message)
           if (!response?.error) {
-            router.push(`/auth/login`);
             toast.success(response?.payload?.message);
+            // router.push(`/auth/login`);
           } else {
             toast.error(response?.payload || 'Something Went Wrong');
           }
