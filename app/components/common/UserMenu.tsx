@@ -51,7 +51,7 @@ export default function UserMenu({ session, className = "" }: UserMenuProps) {
 
           <button
             onClick={() => signOut({ callbackUrl: "/" })}
-            className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100 transition rounded-lg mx-1"
+            className="w-52 text-left px-4 py-2 text-sm hover:bg-gray-100 transition rounded-lg mx-1"
           >
             Logout
           </button>
