@@ -11,14 +11,18 @@ import {
   Contact,
   Info,
   Store,
-  House
+  House,
 } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
 import AddToCartButton from "./addToCartButton";
+import { useSession } from "next-auth/react";
+import UserMenu from "./UserMenu";
 
 export default function Header() {
+  const { data: session, status } = useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
 
   const links = [
     { href: "/home", label: "Home" },
@@ -68,13 +72,15 @@ export default function Header() {
         </nav>
 
         {/* Icons - Desktop */}
-        <div className="hidden lg:flex items-center gap-9 text-gray-600">
-          <Link href="/auth/login">
-            <User className="w-6 h-6 cursor-pointer hover:text-black transition-all duration-300 hover:scale-125 inline-block" />
-          </Link>
-          <Search className="w-6 h-6 cursor-pointer hover:text-black transition-all duration-300 hover:scale-125 inline-block" />
+        <div className="hidden lg:flex items-center gap-9 text-gray-600 relative">
+          <Search className="w-6 h-6 cursor-pointer hover:text-black transition-all duration-300 hover:scale-125" />
             <AddToCartButton />
-          <Heart className="w-6 h-6 cursor-pointer hover:text-black transition-all duration-300 hover:scale-125 inline-block" />
+          <Heart className="w-6 h-6 cursor-pointer hover:text-black transition-all duration-300 hover:scale-125" />
+          <UserMenu
+            session={session}
+            className="hidden md:flex"
+          />
+
         </div>
 
         {/* Navigation - Mobile */}

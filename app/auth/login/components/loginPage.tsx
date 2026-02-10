@@ -11,7 +11,7 @@ export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
   const searchParams = useSearchParams();
   const router = useRouter();
-  const callbackUrl = searchParams.get('callbackUrl') || '/auth';
+  const callbackUrl = searchParams.get('callbackUrl') || '/';
   const [formData, setFormData] = useState({
     email: '',
     password: '',

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import SignIn from "./components/loginPage";
 
-export default function Page() {
+export default async function Page() {
   return (
     // <div className="h-[85vh] w-full flex items-center justify-center">
     //     <Link href="/auth/signup" >
