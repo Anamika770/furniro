@@ -45,7 +45,6 @@ export default function SignUp() {
     try {
       dispatch(addUserFormSlice(null)).then(
         (response: any) => {
-          console.log("Respose Data is:", response?.payload?.message)
           if (!response?.error) {
             toast.success(response?.payload?.message);
             // router.push(`/auth/login`);

@@ -17,8 +17,6 @@ export function createAxiosApi(options: ApiOptions) {
     validateStatus: () => true,
   });
 
-  console.log("ksjcnakjsnjkcakjn")
-
   return async <T = any>(
     endpoint: string,
     requestOptions: RequestOptions = {}

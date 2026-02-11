@@ -25,7 +25,6 @@ export const authOptions: NextAuthOptions = {
             async authorize(credentials, req) {
                 try{
 
-                    console.log("Credentials value is ", credentials)
                     if (!credentials?.email || !credentials?.password) {
                         throw new Error('Email or Password is required');
                     }
@@ -35,14 +34,10 @@ export const authOptions: NextAuthOptions = {
                         password: credentials.password
                     };
 
-                    console.log("userCredentials asas", userCredentials)
-
                     const response = await axiosApi(`/auth/user/login`, {
                         method: 'POST',
                         data: userCredentials
                     });
-
-                    console.log("This is the value of this", response)
 
                     if (!response.success) {
                         const errorMsg =
@@ -51,8 +46,6 @@ export const authOptions: NextAuthOptions = {
                             'Invalid email or password';
                         throw new Error(errorMsg);
                     }
-
-                    console.log("Respose data there", response)
 
                     // Return the user object from the API response
                     const user = response.data.user;
@@ -64,7 +57,6 @@ export const authOptions: NextAuthOptions = {
                         accessToken: user.accessToken
                     };
                 } catch (error:any) {
-                    console.log('The authOptions response error is:', error);
                     throw new Error(error?.message || 'An error occurred while authenticating');
                 }
             }
@@ -81,7 +73,6 @@ export const authOptions: NextAuthOptions = {
             return token;
         },
         async session({ session, token }) {
-          console.log("In Auth Session data 1", session)
             return {
                 ...session,
                 user: {
