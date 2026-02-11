@@ -1,4 +1,5 @@
 "use client";
+
 import logo from "../common/util/mainLogo.png";
 import Link from "next/link";
 import {
@@ -12,177 +13,146 @@ import {
   Info,
   Store,
   House,
+  UserLock,
+  LogOut,
 } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
 import AddToCartButton from "./addToCartButton";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import UserMenu from "./UserMenu";
 
 export default function Header() {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-
   const links = [
-    { href: "/home", label: "Home" },
-    { href: "/shop", label: "Shop" },
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" }
+    { href: "/home", label: "Home", icon: House },
+    { href: "/shop", label: "Shop", icon: Store },
+    { href: "/about", label: "About", icon: Info },
+    { href: "/contact", label: "Contact", icon: Contact },
   ];
 
   return (
     <div className="container mx-auto">
       <div className="flex items-center justify-between w-full py-3">
-        <div className="transition-all duration-500 hover:scale-110">
-          <Link href="/">
-            <div className="cursor-pointer flex justify-between items-center font-bold">
-              <Image
-                src={logo}
-                alt="Logo"
-                className="w-full h-6 lg:w-16 lg:h-7"
-              />
-              <div className="text-black text-2xl lg:text-3xl">Furniro</div>
-            </div>
-          </Link>
-        </div>
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2 font-bold">
+          <Image src={logo} alt="Logo" className="w-16 h-7" />
+          <span className="text-2xl">Furniro</span>
+        </Link>
 
         {/* Mobile Menu Button */}
         <button
           className="lg:hidden z-50"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={() => setIsMenuOpen(true)}
         >
-          {!isMenuOpen && <Menu className="w-6 h-6" />}
+          <Menu className="w-6 h-6" />
         </button>
 
-        {/* Navigation - Desktop */}
+        {/* Desktop Nav */}
         <nav className="hidden lg:block">
-          <ul className="flex items-center gap-14">
-            {links.map((link) => (
-              <li key={link.href}>
-                <Link
-                  className="transition-all duration-300 hover:scale-110 inline-block"
-                  href={link.href}
-                >
-                  {link.label}
+          <ul className="flex gap-12">
+            {links.map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} className="hover:scale-110 inline-block">
+                  {l.label}
                 </Link>
               </li>
             ))}
           </ul>
         </nav>
 
-        {/* Icons - Desktop */}
-        <div className="hidden lg:flex items-center gap-9 text-gray-600 relative">
-          <Search className="w-6 h-6 cursor-pointer hover:text-black transition-all duration-300 hover:scale-125" />
-            <AddToCartButton />
-          <Heart className="w-6 h-6 cursor-pointer hover:text-black transition-all duration-300 hover:scale-125" />
-          <UserMenu
-            session={session}
-            className="hidden md:flex"
-          />
-
+        {/* Desktop Icons */}
+        <div className="hidden lg:flex items-center gap-6">
+          <Search className="w-6 h-6 cursor-pointer" />
+          <AddToCartButton />
+          <Heart className="w-6 h-6 cursor-pointer" />
+          <UserMenu session={session} />
         </div>
 
-        {/* Navigation - Mobile */}
+        {/* ================= MOBILE SIDEBAR ================= */}
         <div
-          className={`fixed top-0 right-0 h-full w-[50%] z-10 bg-white transform ${
+          className={`fixed top-0 right-0 h-full w-[70%] bg-white z-40 transform ${
             isMenuOpen ? "translate-x-0" : "translate-x-full"
-          } transition-transform duration-300 lg:hidden shadow-lg p-8`}
+          } transition-transform duration-300 shadow-xl`}
         >
-          {/* Close Button */}
+          {/* Close */}
           <button
-            className="absolute top-3 right-6"
+            className="absolute top-4 right-4"
             onClick={() => setIsMenuOpen(false)}
           >
-            <X className="w-6 h-6" />
+            <X />
           </button>
 
-          {/* Mobile Menu Items */}
-          <div className="flex flex-col items-start mt-10 gap-4">
-            <Link
-              href="#"
-              className="text-xl hover:text-gray-600"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <div className="flex items-center gap-3">
-                <House className="w-6 h-6" />
-                <span> Home </span>
-              </div>
-            </Link>
-            <Link
-              href="#"
-              className="text-xl hover:text-gray-600"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <div className="flex items-center gap-3">
-                <Store className="w-6 h-6" />
-                <span> Shop </span>
-              </div>
-            </Link>
-            <Link
-              href="#"
-              className="text-xl hover:text-gray-600"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <div className="flex items-center gap-3">
-                <Info className="w-6 h-6" />
-                <span> About </span>
-              </div>
-            </Link>
-            <Link
-              href="/contact"
-              className="text-xl hover:text-gray-600"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <div className="flex items-center gap-3">
-                <Contact className="w-6 h-6" />
-                <span> Contact </span>
-              </div>
-            </Link>
+          {/* Menu Items */}
+          <div className="mt-16 flex flex-col gap-5 px-6">
+            {links.map((l) => {
+              const Icon = l.icon;
+              return (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="flex items-center gap-3 text-lg"
+                >
+                  <Icon className="w-5 h-5" />
+                  {l.label}
+                </Link>
+              );
+            })}
 
-            {/* Mobile Icons */}
-            <div className="flex flex-col items-start gap-4">
+            <div className="border-t pt-4 flex flex-col gap-4">
+              <div className="flex items-center gap-3">
+                <Search className="w-5 h-5" />
+                <span>Search</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <ShoppingCart className="w-5 h-5" />
+                <span>Cart</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Heart className="w-5 h-5" />
+                <span>Wishlist</span>
+              </div>
+            </div>
+          </div>
+
+          {/* ===== MOBILE USER SECTION (BOTTOM) ===== */}
+          <div className="absolute bottom-6 left-0 w-full px-6 border-t pt-4">
+            {session?.user ? (
+              <div className="flex items-center justify-between">
+                {/* User Info */}
+                <div>
+                  <p className="text-sm font-semibold">
+                    {session.user.name}
+                  </p>
+                  <p className="text-xs text-gray-500 truncate">
+                    {session.user.email}
+                  </p>
+                </div>
+
+                {/* Logout Icon */}
+                <button
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    signOut({ callbackUrl: "/" });
+                  }}
+                  className="p-2 rounded-full hover:bg-gray-100"
+                >
+                  <LogOut className="w-5 h-5 text-red-500" />
+                </button>
+              </div>
+            ) : (
               <Link
                 href="/auth/login"
-                className="text-xl hover:text-gray-600"
                 onClick={() => setIsMenuOpen(false)}
+                className="flex items-center justify-between"
               >
-                <div className="flex items-center gap-3">
-                  <User className="w-6 h-6 cursor-pointer hover:text-gray-600 transition-all duration-300 hover:scale-125" />
-                  <span>Account</span>
-                </div>
+                <span className="text-sm font-medium">Login</span>
+                <UserLock className="w-5 h-5" />
               </Link>
-              <Link
-                href="#"
-                className="text-xl hover:text-gray-600"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <div className="flex items-center gap-3">
-                  <Search className="w-6 h-6 cursor-pointer hover:text-gray-600 transition-all duration-300 hover:scale-125" />
-                  <span>Search</span>
-                </div>
-              </Link>
-              <Link
-                href="#"
-                className="text-xl hover:text-gray-600"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <div className="flex items-center gap-3">
-                  <ShoppingCart className="w-6 h-6 cursor-pointer hover:text-gray-600 transition-all duration-300 hover:scale-125" />
-                  <span>Cart</span>
-                </div>
-              </Link>
-              <Link
-                href="#"
-                className="text-xl hover:text-gray-600"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <div className="flex items-center gap-3">
-                  <Heart className="w-6 h-6 cursor-pointer hover:text-gray-600 transition-all duration-300 hover:scale-125" />
-                  <span>Wishlist</span>
-                </div>
-              </Link>
-            </div>
+            )}
           </div>
         </div>
       </div>
