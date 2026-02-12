@@ -36,13 +36,11 @@ export default function Header() {
   return (
     <div className="container mx-auto">
       <div className="flex items-center justify-between w-full py-3">
-        {/* Logo */}
         <Link href="/" className="flex items-center gap-2 font-bold">
           <Image src={logo} alt="Logo" className="w-16 h-7" />
           <span className="text-2xl">Furniro</span>
         </Link>
 
-        {/* Mobile Menu Button */}
         <button
           className="lg:hidden z-50"
           onClick={() => setIsMenuOpen(true)}
@@ -50,7 +48,6 @@ export default function Header() {
           <Menu className="w-6 h-6" />
         </button>
 
-        {/* Desktop Nav */}
         <nav className="hidden lg:block">
           <ul className="flex gap-12">
             {links.map((l) => (
@@ -63,7 +60,6 @@ export default function Header() {
           </ul>
         </nav>
 
-        {/* Desktop Icons */}
         <div className="hidden lg:flex items-center gap-6">
           <Search className="w-6 h-6 cursor-pointer" />
           <AddToCartButton />
@@ -71,13 +67,11 @@ export default function Header() {
           <UserMenu session={session} />
         </div>
 
-        {/* ================= MOBILE SIDEBAR ================= */}
         <div
           className={`fixed top-0 right-0 h-full w-[70%] bg-white z-40 transform ${
             isMenuOpen ? "translate-x-0" : "translate-x-full"
           } transition-transform duration-300 shadow-xl`}
         >
-          {/* Close */}
           <button
             className="absolute top-4 right-4"
             onClick={() => setIsMenuOpen(false)}
@@ -85,7 +79,6 @@ export default function Header() {
             <X />
           </button>
 
-          {/* Menu Items */}
           <div className="mt-16 flex flex-col gap-5 px-6">
             {links.map((l) => {
               const Icon = l.icon;
@@ -118,7 +111,6 @@ export default function Header() {
             </div>
           </div>
 
-          {/* ===== MOBILE USER SECTION (BOTTOM) ===== */}
           <div className="absolute bottom-6 left-0 w-full px-6 border-t pt-4">
             {session?.user ? (
               <div className="flex items-center justify-between">
@@ -132,7 +124,6 @@ export default function Header() {
                   </p>
                 </div>
 
-                {/* Logout Icon */}
                 <button
                   onClick={() => {
                     setIsMenuOpen(false);
@@ -140,7 +131,7 @@ export default function Header() {
                   }}
                   className="p-2 rounded-full hover:bg-gray-100"
                 >
-                  <LogOut className="w-5 h-5 text-red-500" />
+                  <LogOut className="w-5 h-5 text-[#b69132]" />
                 </button>
               </div>
             ) : (
