@@ -1,5 +1,5 @@
 import Link from "next/link";
-import SignIn from "./components/loginPage";
+import SignIn from "@/components/auth/LoginForm";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/authOption";
 import { redirect } from "next/navigation";

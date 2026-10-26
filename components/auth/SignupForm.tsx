@@ -5,7 +5,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { addUserFormSlice, updateUserFormData } from "@/lib/store/slices/users/authFormSlice";
+import { addUserFormSlice, updateUserFormData } from "@/lib/store/slices/auth/authFormSlice";
 import { useAppDispatch, useAppSelector } from "@/lib/store/hooks/hooks";
 
 

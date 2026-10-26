@@ -1,5 +1,40 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Project Structure
+
+Route files stay in `app/`; feature UI and reusable components live outside the route tree:
+
+```text
+app/                         Next.js routes and root layout
+  api/auth/                  NextAuth API route
+  auth/                      Login and signup route pages
+  product/[id]/              Product detail route
+  shop/                      Shop route page
+components/
+  auth/                      Login and signup forms
+  cart/                      Cart UI
+  common/                    Shared UI such as breadcrumbs and banners
+  home/                      Home page sections
+  layout/                    Site header, footer, and page transition
+  product/                   Product grid and cards
+  shop/                      Shop catalog, filters, and pagination
+lib/
+  services/                  Product data access
+  store/                     Redux store, hooks, and feature slices
+types/
+  globals.d.ts               Shared global declarations
+  next-auth.d.ts             NextAuth type extensions
+  auth.ts                    Auth form contract
+  cart.ts                    Cart item contract
+  product.ts                 Product contract
+  index.ts                   Type exports
+public/images/               Static image assets
+```
+
+The intended flow is: route pages compose feature components; components call services or dispatch store actions; services and slices use the shared types from `types/`. Product data is currently local mock data in `lib/services/productService.ts`, so that service is the place to connect a product API later. Checkout, orders, and a user profile are not implemented yet, so their folders are intentionally not created.
+
+The `/product/[id]` route renders a selected product’s gallery, sample variants, cart controls, description, and related items. Ratings, variants, and secondary gallery imagery are demo values in the local catalog and should be replaced with API-backed product data before production.
+
 ## Getting Started
 
 First, run the development server:

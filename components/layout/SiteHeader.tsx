@@ -1,12 +1,10 @@
 "use client";
 
-import logo from "../common/util/mainLogo.png";
 import Link from "next/link";
 import {
   Heart,
   Search,
   ShoppingCart,
-  User,
   Menu,
   X,
   Contact,
@@ -18,16 +16,16 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
-import AddToCartButton from "./addToCartButton";
+import AddToCartButton from "@/components/cart/CartIcon";
 import { useSession, signOut } from "next-auth/react";
-import UserMenu from "./UserMenu";
+import UserMenu from "@/components/common/UserMenu";
 
 export default function Header() {
   const { data: session } = useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const links = [
-    { href: "/home", label: "Home", icon: House },
+    { href: "/", label: "Home", icon: House },
     { href: "/shop", label: "Shop", icon: Store },
     { href: "/about", label: "About", icon: Info },
     { href: "/contact", label: "Contact", icon: Contact },
@@ -37,7 +35,13 @@ export default function Header() {
     <div className="container mx-auto">
       <div className="flex items-center justify-between w-full py-3">
         <Link href="/" className="flex items-center gap-2 font-bold">
-          <Image src={logo} alt="Logo" className="w-16 h-7" />
+          <Image
+            src="/images/main-logo.png"
+            alt="Logo"
+            width={64}
+            height={28}
+            className="h-7 w-16"
+          />
           <span className="text-2xl">Furniro</span>
         </Link>
 

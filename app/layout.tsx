@@ -4,10 +4,10 @@ import './globals.css';
 import 'slick-carousel/slick/slick.css';
 import "slick-carousel/slick/slick-theme.css";
 import StoreProvider from "./StoreProvider";
-import Header from "./components/common/header";
-import PageWrapper from "./motionWrap";
+import Header from "@/components/layout/SiteHeader";
+import PageWrapper from "@/components/layout/PageTransition";
 import { Toaster } from "sonner";
-import Footer from "./components/common/footer";
+import Footer from "@/components/layout/SiteFooter";
 import SessionProviderWrapper from "./SessionProviderWrapper";
 
 const geistSans = Geist({

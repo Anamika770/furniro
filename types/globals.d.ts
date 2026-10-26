@@ -8,7 +8,7 @@ type BaseState<T> = {
   data?: T;
 };
 
-
+  
 type PaginationState<T> = BaseState<T> & {
   pagination: {
     page: number;

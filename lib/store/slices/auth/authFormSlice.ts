@@ -1,14 +1,7 @@
 import { axiosApi } from "@/appUtils/axiosConfig";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
-
-
-export type IAuthForm = {
-    name?: string;
-    phone?: string;
-    password?: string;
-    email?: string;
-}
+import type { IAuthForm } from "@/types/auth";
 
 const initialState = {
   singleUserState: {

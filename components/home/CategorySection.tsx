@@ -1,15 +1,12 @@
 'use client'
 import Image from "next/image";
-import group1 from "./utils/mask_group_1.jpg"
-import group2 from "./utils/mask_group_2.png"
-import group3 from "./utils/mask_group_3.png"
 import Slider from "react-slick";
 
 export default function Category() {
     const categoryItems = [
-        { image: group1, title: "Dining" },
-        { image: group2, title: "Living" },
-        { image: group3, title: "Bedroom" },
+        { image: "/images/home/mask_group_1.jpg", title: "Dining" },
+        { image: "/images/home/mask_group_2.png", title: "Living" },
+        { image: "/images/home/mask_group_3.png", title: "Bedroom" },
     ]
     
     const settings = {

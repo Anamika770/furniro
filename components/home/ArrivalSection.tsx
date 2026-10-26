@@ -1,12 +1,17 @@
 import Image from "next/image";
-import arrivalSection from "../home/utils/Arrival_section.jpg"
 
 export default function Arrival() {
     return (
         <>
-        {/* // Desktop */}
-        <section className="relative">
-            <Image src={arrivalSection} alt="New Arrival Section" className="w-full" />
+        <section className="relative min-h-[300px] md:min-h-[500px]">
+            <Image
+                src="/images/home/arrival-section.jpg"
+                alt="New Arrival Section"
+                fill
+                priority
+                sizes="100vw"
+                className="object-cover"
+            />
 
             <div className="absolute inset-0 container mx-auto items-center justify-end pr-10 hidden px-2 lg:flex">
                 <div className="bg-[#FFF3E3] border border-[#FFF3E3] p-6 shadow-lg max-w-md">
